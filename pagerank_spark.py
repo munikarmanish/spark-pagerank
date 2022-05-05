@@ -12,8 +12,8 @@ from operator import add
 from pathlib import Path
 from pyspark.sql import SparkSession
 
-MAX_ITER = 30
-TOLERANCE = 1.0e-6
+MAX_ITER = 50
+TOLERANCE = 1.0e-7
 ALPHA = 0.85
 PARALLELISM = 10
 
@@ -49,7 +49,6 @@ def main():
     spark = SparkSession\
         .builder\
         .appName("pagerank")\
-        .master("yarn")\
         .config("spark.executor.instances", PARALLELISM)\
         .config("spark.executor.cores", 1)\
         .config("spark.default.parallelism", PARALLELISM)\
